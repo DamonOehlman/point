@@ -8,7 +8,7 @@
     "touch",
     "stream"
   ],
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "feature": "0.0.x"
   },
