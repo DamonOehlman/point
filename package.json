@@ -1,0 +1,27 @@
+{
+  "name": "point",
+  "description": "Capture Touch and Mouse events and emit data as a stream",
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
+  "tags": [
+    "browser",
+    "mouse",
+    "touch",
+    "stream"
+  ],
+  "version": "0.0.0",
+  "dependencies": {
+    "feature": "0.0.x"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DamonOehlman/point.git"
+  },
+  "bugs": {
+    "url": "http://github.com/DamonOehlman/point/issues"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/tape test/*.js"
+  },
+  "contributors": []
+}
