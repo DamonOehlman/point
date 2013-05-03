@@ -13,7 +13,9 @@ var capture = exports.capture = function(node, options) {
     // create the new stream
     var stream = new Stream(),
         opts = options || {},
-        target = opts.target || node,
+        startTarget = opts.start || node,
+        moveTarget = opts.move || node,
+        endTarget = opts.end || node,
         isDown = false;
 
     function data(type, touches, evt) {
@@ -27,33 +29,33 @@ var capture = exports.capture = function(node, options) {
     // if this interface supports touch, use touch events
     if (supportsTouch) {
         // add the appropriate listeners
-        node.addEventListener('touchstart', function(evt) {
+        startTarget.addEventListener('touchstart', function(evt) {
             data('start', evt.changedTouches, evt);
         });
 
-        node.addEventListener('touchmove', function(evt) {
+        moveTarget.addEventListener('touchmove', function(evt) {
             data('move', evt.targetTouches, evt);
         });
 
-        node.addEventListener('touchend', function(evt) {
+        endTarget.addEventListener('touchend', function(evt) {
             data('end', evt.changedTouches, evt);
         });
     }
     // otherwise, capture mouse events
     else {
-        node.addEventListener('mousedown', function(evt) {
+        startTarget.addEventListener('mousedown', function(evt) {
             isDown = isDown || (evt.button === 0);
             data(
                 'start', fakeTouch(evt), evt);
         });
 
-        node.addEventListener('mousemove', function(evt) {
+        moveTarget.addEventListener('mousemove', function(evt) {
             if (isDown) {
                 data('move', fakeTouch(evt), evt);
             }
         });
 
-        node.addEventListener('mouseup', function(evt) {
+        endTarget.addEventListener('mouseup', function(evt) {
             data('end', fakeTouch(evt), evt);
         });
 
