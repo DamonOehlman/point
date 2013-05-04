@@ -1,4 +1,4 @@
-var point = require('./');
+var point = require('../');
 
 window.addEventListener('load', function() {
     var stream = point.capture(document.querySelector('.toucharea'));

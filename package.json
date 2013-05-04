@@ -10,7 +10,8 @@
   ],
   "version": "0.1.1",
   "dependencies": {
-    "feature": "0.0.x"
+    "feature": "0.0.x",
+    "through": "2.3.x"
   },
   "devDependencies": {},
   "repository": {
