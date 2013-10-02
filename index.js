@@ -35,9 +35,15 @@ var supportsTouch = require('feature/touch');
   [ pageX, pageY, data, originalEvent ]
   ```
 
-  At this stage, the data object [2] simply tells you the type of the pointer
-  event, with three possible values:
+  At this stage, the data object `args[2]` simply tells you the type of the
+  pointer event:
 
+  ```js
+  { type: 'start` }
+  ```
+
+  Possible values:
+  
   - start
   - move
   - end
