@@ -1,16 +1,10 @@
 {
   "name": "point",
-  "description": "Capture Touch and Mouse events and emit data as a stream",
+  "description": "Unified, Observable Touch and Mouse Events",
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
-  "tags": [
-    "browser",
-    "mouse",
-    "touch",
-    "stream"
-  ],
   "version": "0.1.1",
   "dependencies": {
-    "feature": "0.0.x",
+    "feature": "~0.1.2",
     "observable": "~2.1.2"
   },
   "devDependencies": {},
@@ -22,7 +16,16 @@
     "url": "http://github.com/DamonOehlman/point/issues"
   },
   "scripts": {
-    "test": "./node_modules/.bin/tape test/*.js"
+    "gendocs": "gendocs > README.md"
   },
-  "contributors": []
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "keywords": [
+    "mouse",
+    "touch",
+    "observable"
+  ],
+  "license": "MIT"
 }
