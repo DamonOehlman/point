@@ -39,7 +39,7 @@ var supportsTouch = require('feature/touch');
   pointer event:
 
   ```js
-  { type: 'start` }
+  { type: 'start' }
   ```
 
   Possible values:

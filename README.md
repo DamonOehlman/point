@@ -35,7 +35,7 @@ At this stage, the data object `args[2]` simply tells you the type of the
 pointer event:
 
 ```js
-{ type: 'start` }
+{ type: 'start' }
 ```
 
 Possible values:
