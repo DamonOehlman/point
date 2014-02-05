@@ -57,12 +57,12 @@ module.exports = function(target, opts) {
     start: (opts || {}).start || target,
     move: (opts || {}).move || target,
     end: (opts || {}).end || target
-  }, log, target);
+  }, log, opts);
 
   return log;
 };
 
-function bindTouch(targets, log) {
+function bindTouch(targets, log, opts) {
   // add the appropriate listeners
   targets.start.addEventListener('touchstart', function(evt) {
     var touch = evt.changedTouches[0];
@@ -83,8 +83,9 @@ function bindTouch(targets, log) {
   });
 }
 
-function bindMouse(targets, log) {
+function bindMouse(targets, log, opts) {
   var isDown = false;
+  var captureOver = (opts || {}).over;
 
   targets.start.addEventListener('mousedown', function(evt) {
     isDown = isDown || (evt.button === 0);
@@ -92,11 +93,12 @@ function bindMouse(targets, log) {
   });
 
   targets.move.addEventListener('mousemove', function(evt) {
-    if (! isDown) {
+    var eventType = isDown ? 'move' : 'over';
+    if (eventType === 'over' && (! captureOver)) {
       return;
     }
 
-    log([ evt.pageX, evt.pageY, { type: 'move' } ]);
+    log([ evt.pageX, evt.pageY, { type:  eventType } ]);
   });
 
   targets.end.addEventListener('mouseup', function(evt) {
