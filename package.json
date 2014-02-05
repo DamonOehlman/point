@@ -10,10 +10,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/DamonOehlman/point.git"
+    "url": "https://github.com/DamonOehlman/point.git"
   },
   "bugs": {
-    "url": "https://bitbucket.org/DamonOehlman/point/issues"
+    "url": "https://github.com/DamonOehlman/point/issues"
   },
   "scripts": {
     "gendocs": "gendocs > README.md"
