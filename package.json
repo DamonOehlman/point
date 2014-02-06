@@ -27,5 +27,6 @@
     "touch",
     "observable"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/DamonOehlman/point"
 }
