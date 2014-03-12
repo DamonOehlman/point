@@ -6,6 +6,7 @@ mouse and touch events.
 
 [![NPM](https://nodei.co/npm/point.png)](https://nodei.co/npm/point/)
 
+![unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)
 
 ## Usage
 
