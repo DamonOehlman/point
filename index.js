@@ -67,19 +67,19 @@ function bindTouch(targets, log, opts) {
   targets.start.addEventListener('touchstart', function(evt) {
     var touch = evt.changedTouches[0];
 
-    log([ touch.pageX, touch.pageY, { type: 'start' } ]);
+    log([ touch.pageX, touch.pageY, { type: 'start' }, evt ]);
   });
 
   targets.move.addEventListener('touchmove', function(evt) {
     var touch = evt.targetTouches[0];
 
-    log([ touch.pageX, touch.pageY, { type: 'move' } ]);
+    log([ touch.pageX, touch.pageY, { type: 'move' }, evt ]);
   });
 
   targets.end.addEventListener('touchend', function(evt) {
     var touch = evt.changedTouches[0];
 
-    log([ touch.pageX, touch.pageY, { type: 'end' }]);
+    log([ touch.pageX, touch.pageY, { type: 'end' }, evt ]);
   });
 }
 
@@ -89,7 +89,7 @@ function bindMouse(targets, log, opts) {
 
   targets.start.addEventListener('mousedown', function(evt) {
     isDown = isDown || (evt.button === 0);
-    log([ evt.pageX, evt.pageY, { type: 'start' } ]);
+    log([ evt.pageX, evt.pageY, { type: 'start' }, evt ]);
   });
 
   targets.move.addEventListener('mousemove', function(evt) {
@@ -98,11 +98,11 @@ function bindMouse(targets, log, opts) {
       return;
     }
 
-    log([ evt.pageX, evt.pageY, { type:  eventType } ]);
+    log([ evt.pageX, evt.pageY, { type:  eventType }, evt ]);
   });
 
   targets.end.addEventListener('mouseup', function(evt) {
-    log([ evt.pageX, evt.pageY, { type: 'end' } ]);
+    log([ evt.pageX, evt.pageY, { type: 'end' }, evt ]);
   });
 
   // mouse up events are handled at the document level
