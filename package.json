@@ -2,7 +2,7 @@
   "name": "point",
   "description": "Unified, Observable Touch and Mouse Events",
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "feature": "~0.1.2",
     "observable": "~2.1.2"
