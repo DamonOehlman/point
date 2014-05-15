@@ -8,6 +8,7 @@
     "observable": "~2.1.2"
   },
   "devDependencies": {
+    "eve": "~0.4",
     "pull-observable": "~0.1",
     "pull-stream": "^2"
   },
