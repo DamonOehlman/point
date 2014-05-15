@@ -43,10 +43,22 @@ var supportsTouch = require('feature/touch');
   ```
 
   Possible values:
-  
+
   - start
   - move
   - end
+
+  ## Advanced Example: Replacing Interact
+
+  Using this module in conjunction with a
+  [pull-stream](https://github.com/dominictarr/pull-stream) and
+  [pull-observable](https://github.com/DamonOehlman/pull-observable) it is
+  possible to replicate the function of a library that I wrote a few years
+  ago called [interact](https://github.com/DamonOehlman/interact).  Interact
+  was designed to capture bound events and send them to a message bus Using
+  [eve](https://github.com/adobewebplatform/eve):
+
+  <<< examples/publish-to-bus.js
 
 **/
 module.exports = function(target, opts) {

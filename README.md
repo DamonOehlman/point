@@ -6,7 +6,7 @@ mouse and touch events.
 
 [![NPM](https://nodei.co/npm/point.png)](https://nodei.co/npm/point/)
 
-![unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)
+[![unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)](https://github.com/badges/stability-badges) 
 
 ## Usage
 
@@ -44,6 +44,38 @@ Possible values:
 - start
 - move
 - end
+
+## Advanced Example: Replacing Interact
+
+Using this module in conjunction with a
+[pull-stream](https://github.com/dominictarr/pull-stream) and
+[pull-observable](https://github.com/DamonOehlman/pull-observable) it is
+possible to replicate the function of a library that I wrote a few years
+ago called [interact](https://github.com/DamonOehlman/interact).  Interact
+was designed to capture bound events and send them to a message bus Using
+[eve](https://github.com/adobewebplatform/eve):
+
+```js
+var pull = require('pull-stream');
+var observe = require('pull-observable');
+var point = require('point');
+var eve = require('eve');
+
+eve.on('pointer.*', function(x, y) {
+  console.log('captured: ' + eve.nt() + ' @ ', x, y);
+});
+
+pull(
+  observe(point(document)),
+  pull.drain(function(args) {
+    var type = (args[2] || {}).type;
+
+    eve.apply(null, ['pointer.' + type, args[3]].concat(args.slice(0, 2)));
+  })
+);
+
+
+```
 
 ## License(s)
 
