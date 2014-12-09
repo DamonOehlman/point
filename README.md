@@ -1,12 +1,13 @@
 # point
 
-Use [observable](https://github.com/dominictarr/observable) to monitor
-mouse and touch events.
+Use [observable](https://github.com/dominictarr/observable) (well, actually
+[Observ](https://github.com/Raynos/observ) now) to monitor mouse and touch
+events.
 
 
 [![NPM](https://nodei.co/npm/point.png)](https://nodei.co/npm/point/)
 
-[![unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)](https://github.com/badges/stability-badges) 
+[![unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)](https://github.com/dominictarr/stability#unstable) 
 
 ## Usage
 

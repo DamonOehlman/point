@@ -8,8 +8,9 @@ var supportsTouch = require('feature/touch');
 /**
   # point
 
-  Use [observable](https://github.com/dominictarr/observable) to monitor
-  mouse and touch events.
+  Use [observable](https://github.com/dominictarr/observable) (well, actually
+  [Observ](https://github.com/Raynos/observ) now) to monitor mouse and touch
+  events.
 
   ## Usage
 
