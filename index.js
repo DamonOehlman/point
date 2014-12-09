@@ -2,7 +2,7 @@
 /* global document: false */
 'use strict';
 
-var observable = require('observable');
+var Observ = require('observ');
 var supportsTouch = require('feature/touch');
 
 /**
@@ -62,46 +62,46 @@ var supportsTouch = require('feature/touch');
 
 **/
 module.exports = function(target, opts) {
-  var log = observable();
+  var log = Observ([]);
 
   // bind to targets
   (supportsTouch ? bindTouch : bindMouse).call(null, {
     start: (opts || {}).start || target,
     move: (opts || {}).move || target,
     end: (opts || {}).end || target
-  }, log, opts);
+  }, log.set, opts);
 
   return log;
 };
 
-function bindTouch(targets, log, opts) {
+function bindTouch(targets, update, opts) {
   // add the appropriate listeners
   targets.start.addEventListener('touchstart', function(evt) {
     var touch = evt.changedTouches[0];
 
-    log([ touch.pageX, touch.pageY, { type: 'start' }, evt ]);
+    update([ touch.pageX, touch.pageY, { type: 'start' }, evt ]);
   });
 
   targets.move.addEventListener('touchmove', function(evt) {
     var touch = evt.targetTouches[0];
 
-    log([ touch.pageX, touch.pageY, { type: 'move' }, evt ]);
+    update([ touch.pageX, touch.pageY, { type: 'move' }, evt ]);
   });
 
   targets.end.addEventListener('touchend', function(evt) {
     var touch = evt.changedTouches[0];
 
-    log([ touch.pageX, touch.pageY, { type: 'end' }, evt ]);
+    update([ touch.pageX, touch.pageY, { type: 'end' }, evt ]);
   });
 }
 
-function bindMouse(targets, log, opts) {
+function bindMouse(targets, update, opts) {
   var isDown = false;
   var captureOver = (opts || {}).over;
 
   targets.start.addEventListener('mousedown', function(evt) {
     isDown = isDown || (evt.button === 0);
-    log([ evt.pageX, evt.pageY, { type: 'start' }, evt ]);
+    update([ evt.pageX, evt.pageY, { type: 'start' }, evt ]);
   });
 
   targets.move.addEventListener('mousemove', function(evt) {
@@ -110,11 +110,11 @@ function bindMouse(targets, log, opts) {
       return;
     }
 
-    log([ evt.pageX, evt.pageY, { type:  eventType }, evt ]);
+    update([ evt.pageX, evt.pageY, { type:  eventType }, evt ]);
   });
 
   targets.end.addEventListener('mouseup', function(evt) {
-    log([ evt.pageX, evt.pageY, { type: 'end' }, evt ]);
+    update([ evt.pageX, evt.pageY, { type: 'end' }, evt ]);
   });
 
   // mouse up events are handled at the document level

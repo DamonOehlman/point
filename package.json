@@ -5,7 +5,7 @@
   "version": "0.3.1",
   "dependencies": {
     "feature": "~0.1.2",
-    "observable": "~2.1.2"
+    "observ": "^0.2.0"
   },
   "devDependencies": {
     "eve": "~0.4",
