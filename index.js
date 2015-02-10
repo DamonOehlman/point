@@ -61,6 +61,19 @@ var supportsTouch = require('feature/touch');
 
   <<< examples/publish-to-bus.js
 
+  ## Reference
+
+  ### `point(target, opts?) => Observ`
+
+  Create a new [Observable](https://github.com/Raynos/observ) that will be
+  updated in response to pointer movement on the specified `target`.
+
+  The following options can be provided to tweak behaviour:
+
+  - `over` - capture mouse over events in addition to mouse move events
+  - `preventDefault` - whether the default event behaviour should be
+    prevented in the browser event listeners.
+
 **/
 module.exports = function(target, opts) {
   var log = Observ([]);

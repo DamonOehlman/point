@@ -78,11 +78,24 @@ pull(
 
 ```
 
+## Reference
+
+### `point(target, opts?) => Observ`
+
+Create a new [Observable](https://github.com/Raynos/observ) that will be
+updated in response to pointer movement on the specified `target`.
+
+The following options can be provided to tweak behaviour:
+
+- `over` - capture mouse over events in addition to mouse move events
+- `preventDefault` - whether the default event behaviour should be
+  prevented in the browser event listeners.
+
 ## License(s)
 
 ### MIT
 
-Copyright (c) 2014 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2015 Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
