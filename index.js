@@ -64,13 +64,23 @@ var supportsTouch = require('feature/touch');
 **/
 module.exports = function(target, opts) {
   var log = Observ([]);
+  var preventDefault = (opts || {}).preventDefault;
+
+  function update(data) {
+    var evt = data[3];
+    if (preventDefault) {
+      evt.preventDefault();
+    }
+
+    log.set(data);
+  }
 
   // bind to targets
   (supportsTouch ? bindTouch : bindMouse).call(null, {
     start: (opts || {}).start || target,
     move: (opts || {}).move || target,
     end: (opts || {}).end || target
-  }, log.set, opts);
+  }, update, opts);
 
   return log;
 };
