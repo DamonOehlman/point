@@ -87,17 +87,16 @@ module.exports = function(target, opts) {
   }
 
   // bind to targets
-  bindMouse.call(null, {
-    start: (opts || {}).start || target,
-    move: (opts || {}).move || target,
-    end: (opts || {}).end || target
-  }, update, opts);
+  function targetToBind(evt_type){
+    evt_type.call(null, {
+      start: (opts || {}).start || target,
+      move: (opts || {}).move || target,
+      end: (opts || {}).end || target
+    }, update, opts);
+  }
 
-  if(supportsTouch) bindTouch.call(null, {
-    start: (opts || {}).start || target,
-    move: (opts || {}).move || target,
-    end: (opts || {}).end || target
-  }, update, opts);
+  targetToBind(bindMouse);
+  if(supportsTouch) targetToBind(bindTouch);
 
   return log;
 };
