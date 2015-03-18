@@ -4,7 +4,6 @@
 
 var Observ = require('observ');
 var supportsTouch = require('feature/touch');
-
 /**
   # point
 
@@ -84,12 +83,17 @@ module.exports = function(target, opts) {
     if (preventDefault) {
       evt.preventDefault();
     }
-
     log.set(data);
   }
 
   // bind to targets
-  (supportsTouch ? bindTouch : bindMouse).call(null, {
+  bindMouse.call(null, {
+    start: (opts || {}).start || target,
+    move: (opts || {}).move || target,
+    end: (opts || {}).end || target
+  }, update, opts);
+
+  if(supportsTouch) bindTouch.call(null, {
     start: (opts || {}).start || target,
     move: (opts || {}).move || target,
     end: (opts || {}).end || target
