@@ -45,6 +45,7 @@ Possible values:
 - start
 - move
 - end
+- dblclick (when `doubleClick` is passed)
 
 ## Advanced Example: Replacing Interact
 
@@ -90,12 +91,13 @@ The following options can be provided to tweak behaviour:
 - `over` - capture mouse over events in addition to mouse move events
 - `preventDefault` - whether the default event behaviour should be
   prevented in the browser event listeners.
+- `doubleClick` - capture double click events in addition to other events
 
 ## License(s)
 
 ### MIT
 
-Copyright (c) 2015 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2016 Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
