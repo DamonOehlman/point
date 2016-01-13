@@ -47,6 +47,7 @@ var supportsTouch = require('feature/touch');
   - start
   - move
   - end
+  - dblclick (when `doubleClick` is passed)
 
   ## Advanced Example: Replacing Interact
 
@@ -72,6 +73,7 @@ var supportsTouch = require('feature/touch');
   - `over` - capture mouse over events in addition to mouse move events
   - `preventDefault` - whether the default event behaviour should be
     prevented in the browser event listeners.
+  - `doubleClick` - capture double click events in addition to other events
 
 **/
 module.exports = function(target, opts) {
@@ -91,7 +93,8 @@ module.exports = function(target, opts) {
     evt_type.call(null, {
       start: (opts || {}).start || target,
       move: (opts || {}).move || target,
-      end: (opts || {}).end || target
+      end: (opts || {}).end || target,
+      doubleClick: (opts || {}).doubleClick || target
     }, update, opts);
   }
 
@@ -143,6 +146,12 @@ function bindMouse(targets, update, opts) {
   targets.end.addEventListener('mouseup', function(evt) {
     update([ evt.pageX, evt.pageY, { type: 'end' }, evt ]);
   });
+
+  if ((opts || {}).doubleClick) {
+    targets.doubleClick.addEventListener('dblclick', function(evt) {
+      update([ evt.pageX, evt.pageY, { type: 'dblclick' }, evt ]);
+    });
+  }
 
   // mouse up events are handled at the document level
   document.addEventListener('mouseup', function(evt) {
